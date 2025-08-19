@@ -7,9 +7,8 @@ WORKDIR /app
 # Copy the application files into the working directory
 COPY . /app
 
-# Install the application dependencies
-RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Define the entry point for the container
-CMD ["gunicorn", "--workers", "1", "--threads", "1", "app:app", "--max-requests", "5", "--max-requests-jitter", "2"]
-
+# Gunicorn ile 4 worker, 1 thread
+CMD ["gunicorn", "-w", "4", "--threads", "1", "-b", "0.0.0.0:8080", "app:app", "--max-requests", "5", "--log-level", "debug"]
