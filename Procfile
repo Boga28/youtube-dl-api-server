@@ -1,1 +1,1 @@
-web: gunicorn youtube_dl_server.app:app --log-file -
+web: gunicorn -b 0.0.0.0:$PORT "app:create_app()"
