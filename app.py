@@ -14,7 +14,7 @@ except ImportError:
     from yt_dlp.version import __version__ as youtube_dl_version
     ytdl_variant = 'yt_dlp'
 
-from .version import __version__
+from version import __version__
 
 if not hasattr(sys.stderr, 'isatty'):
     sys.stderr.isatty = lambda: False
