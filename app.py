@@ -1,3 +1,4 @@
+
 import functools
 import logging
 import traceback
@@ -13,14 +14,10 @@ except ImportError:
     from yt_dlp.version import __version__ as youtube_dl_version
     ytdl_variant = 'yt_dlp'
 
-
 from .version import __version__
 
-
 if not hasattr(sys.stderr, 'isatty'):
-    # In GAE it's not defined and we must monkeypatch
     sys.stderr.isatty = lambda: False
-
 
 class SimpleYDL(ytdl.YoutubeDL):
     def __init__(self, *args, **kargs):
